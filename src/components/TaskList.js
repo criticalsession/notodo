@@ -4,7 +4,11 @@ import _ from "lodash";
 
 import "./TaskList.css";
 
-export default function TaskList({ tasks, handleToggleComplete }) {
+export default function TaskList({
+  tasks,
+  handleToggleComplete,
+  handleOpenNote,
+}) {
   const getTaskDisplay = (tasks) => {
     return tasks.map((task) => (
       <li
@@ -12,12 +16,16 @@ export default function TaskList({ tasks, handleToggleComplete }) {
         className={`task-item ${
           task.completeDate === null ? "" : "is-complete"
         }`}
+        onClick={() => handleOpenNote(task.id)}
       >
         <i
           className={`fa-regular ${
             task.completeDate === null ? "fa-square" : "fa-square-check"
           }`}
-          onClick={() => handleToggleComplete(task.id)}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleToggleComplete(task.id);
+          }}
         ></i>{" "}
         {task.title}{" "}
         {task.completeDate !== null && (
@@ -34,11 +42,9 @@ export default function TaskList({ tasks, handleToggleComplete }) {
     "desc"
   );
 
-  console.log(completedTasks);
-
   return (
     <div className="task-list">
-      <p>Pending</p>
+      <h2>Pending</h2>
       {pendingTasks.length > 0 && <ul>{getTaskDisplay(pendingTasks)}</ul>}
       {pendingTasks.length === 0 && (
         <p>
@@ -47,7 +53,7 @@ export default function TaskList({ tasks, handleToggleComplete }) {
         </p>
       )}
 
-      <p>Complete</p>
+      <h2>Complete</h2>
       <ul>{getTaskDisplay(completedTasks)}</ul>
     </div>
   );
