@@ -10,16 +10,25 @@ function App() {
       id: 1,
       title: "My first task item!",
       completeDate: null,
+      module: null,
     },
     {
       id: 2,
       title: "My second task item!",
       completeDate: null,
+      module: "My project",
     },
     {
       id: 3,
       title: "And my third!",
       completeDate: null,
+      module: "My project",
+    },
+    {
+      id: 4,
+      title: "Another task item...",
+      completeDate: null,
+      module: "Another project",
     },
   ]);
 

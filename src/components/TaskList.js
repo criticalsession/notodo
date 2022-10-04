@@ -9,15 +9,16 @@ export default function TaskList({ tasks, handleToggleComplete }) {
     return tasks.map((task) => (
       <li
         key={task.id}
-        onClick={() => handleToggleComplete(task.id)}
         className={`task-item ${
           task.completeDate === null ? "" : "is-complete"
         }`}
       >
-        {task.completeDate !== null && (
-          <i className="fa-regular fa-square-check"></i>
-        )}
-        {task.completeDate === null && <i className="fa-regular fa-square"></i>}{" "}
+        <i
+          className={`fa-regular ${
+            task.completeDate === null ? "fa-square" : "fa-square-check"
+          }`}
+          onClick={() => handleToggleComplete(task.id)}
+        ></i>{" "}
         {task.title}{" "}
         {task.completeDate !== null && (
           <em>({humanize.date("y-M-d G:i", task.completeDate)})</em>
