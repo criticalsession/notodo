@@ -12,10 +12,32 @@
   cursor: pointer;
 }
 
+.task-list ul li .task-module {
+  font-weight: 100;
+}
+
+.task-list ul li .task-module:hover {
+  text-decoration: underline;
+}
+
 .task-list ul li.is-complete {
   color: #888;
 }
 
 .task-list h2 {
   font-size: 16px;
+}
+
+.task-list .clear-filter {
+  display: inline-block;
+  font-weight: normal;
+  margin-left: 20px;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 4px;
+}
+
+.task-list .clear-filter:hover {
+  background-color: black;
+  color: white;
 }

@@ -8,7 +8,42 @@ export default function TaskList({
   tasks,
   handleToggleComplete,
   handleOpenNote,
+  handleFilterByModule,
+  moduleFilter,
 }) {
+  const toggleComplete = (event, taskId) => {
+    event.stopPropagation();
+    handleToggleComplete(taskId);
+  };
+
+  const filterByModule = (event, task) => {
+    event.stopPropagation();
+    handleFilterByModule(task);
+  };
+
+  const getCompletedDate = (task) => {
+    return (
+      <>
+        {task.completeDate !== null && (
+          <em>({humanize.date("y-M-d G:i", task.completeDate)})</em>
+        )}
+      </>
+    );
+  };
+
+  const getCheckMark = (task) => {
+    return (
+      <>
+        <i
+          className={`fa-regular ${
+            task.completeDate === null ? "fa-square" : "fa-square-check"
+          }`}
+          onClick={(e) => toggleComplete(e, task.id)}
+        ></i>{" "}
+      </>
+    );
+  };
+
   const getTaskDisplay = (tasks) => {
     return tasks.map((task) => (
       <li
@@ -18,19 +53,19 @@ export default function TaskList({
         }`}
         onClick={() => handleOpenNote(task.id)}
       >
-        <i
-          className={`fa-regular ${
-            task.completeDate === null ? "fa-square" : "fa-square-check"
-          }`}
-          onClick={(e) => {
-            e.stopPropagation();
-            handleToggleComplete(task.id);
-          }}
-        ></i>{" "}
-        {task.title}{" "}
-        {task.completeDate !== null && (
-          <em>({humanize.date("y-M-d G:i", task.completeDate)})</em>
+        {getCheckMark(task)}
+        {task.module !== null && (
+          <>
+            <span
+              className="task-module"
+              onClick={(e) => filterByModule(e, task)}
+            >
+              {task.module}
+            </span>{" "}
+          </>
         )}
+        {task.module === null && " "}
+        {task.title} {getCompletedDate(task)}
       </li>
     ));
   };
@@ -44,7 +79,17 @@ export default function TaskList({
 
   return (
     <div className="task-list">
-      <h2>Pending</h2>
+      <h2>
+        Pending{" "}
+        {moduleFilter !== null && (
+          <span
+            className="clear-filter"
+            onClick={() => handleFilterByModule(null)}
+          >
+            <i className="fa-solid fa-xmark"></i> Clear project filter
+          </span>
+        )}
+      </h2>
       {pendingTasks.length > 0 && <ul>{getTaskDisplay(pendingTasks)}</ul>}
       {pendingTasks.length === 0 && (
         <p>

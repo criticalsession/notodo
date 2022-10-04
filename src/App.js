@@ -6,6 +6,7 @@ import TaskList from "./components/TaskList";
 import "./App.css";
 
 function App() {
+  const [moduleFilter, setModuleFilter] = useState(null);
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -63,6 +64,17 @@ function App() {
     console.log("open note", id);
   };
 
+  const filterByModule = (task) => {
+    setModuleFilter(task === null ? null : task.module);
+  };
+
+  const getFilteredTasks = () => {
+    return _.sortBy(tasks, (t) => t.createDate).filter((t) => {
+      if (moduleFilter === null) return t;
+      else return t.module === moduleFilter;
+    });
+  };
+
   return (
     <div className="App">
       <h1>
@@ -75,9 +87,11 @@ function App() {
       )}
       {tasks.length > 0 && (
         <TaskList
-          tasks={_.sortBy(tasks, (t) => t.createDate)}
+          tasks={getFilteredTasks()}
           handleToggleComplete={toggleComplete}
           handleOpenNote={openNote}
+          handleFilterByModule={filterByModule}
+          moduleFilter={moduleFilter}
         />
       )}
     </div>
