@@ -10,6 +10,7 @@ export default function TaskList({
   handleOpenNote,
   handleFilterByModule,
   moduleFilter,
+  handleClearCompleted,
 }) {
   const toggleComplete = (event, taskId) => {
     event.stopPropagation();
@@ -65,7 +66,9 @@ export default function TaskList({
           </>
         )}
         {task.module === null && " "}
-        <span className="task-title">{task.title} </span>
+        <span className={`task-title ${task.isOpen ? "task-open" : ""}`}>
+          {task.title}{" "}
+        </span>
         {getCompletedDate(task)}
       </li>
     ));
@@ -99,7 +102,14 @@ export default function TaskList({
         </p>
       )}
 
-      <h2>Complete</h2>
+      <h2>
+        Completed{" "}
+        {completedTasks.length > 0 && (
+          <span className="clear-filter" onClick={handleClearCompleted}>
+            <i className="fa-solid fa-trash"></i> Clear completed
+          </span>
+        )}
+      </h2>
       <ul>{getTaskDisplay(completedTasks)}</ul>
     </div>
   );

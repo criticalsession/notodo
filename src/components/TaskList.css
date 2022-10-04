@@ -16,7 +16,8 @@
   font-weight: bold;
 }
 
-.task-list ul li .task-title:hover {
+.task-list ul li .task-title:hover,
+.task-list ul li .task-title.task-open {
   font-weight: bold;
   text-decoration: underline;
 }
