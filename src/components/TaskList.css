@@ -1,0 +1,17 @@
+.task-list ul {
+  list-style: none;
+  text-indent: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.task-list ul li {
+  text-indent: 0;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.task-list ul li.is-complete {
+  color: #888;
+}
