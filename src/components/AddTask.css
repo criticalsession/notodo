@@ -1,0 +1,24 @@
+.add-task {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px 0;
+  border: solid 1px #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f4f7f9;
+}
+
+.add-task strong {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.add-task input {
+  flex-grow: 1;
+  padding: 5px;
+  padding-left: 10px;
+  font-size: 16px;
+  border: solid 2px black;
+  border-radius: 10px;
+}

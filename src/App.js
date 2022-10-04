@@ -2,6 +2,7 @@ import { useState } from "react";
 import _ from "lodash";
 
 import TaskList from "./components/TaskList";
+import AddTask from "./components/AddTask";
 
 import "./App.css";
 
@@ -75,11 +76,25 @@ function App() {
     });
   };
 
+  const addTask = (taskTitle) => {
+    const newTask = {
+      id: Math.floor(Math.random() * 1000),
+      title: taskTitle,
+      createDate: new Date(),
+      module: "",
+      notes: "",
+      completeDate: null,
+    };
+
+    setTasks((prevTasks) => [...prevTasks, newTask]);
+  };
+
   return (
     <div className="App">
       <h1>
         <strong>no</strong>todo <i className="fa-solid fa-badge-check"></i>
       </h1>
+      <AddTask handleAddTask={addTask} />
       {tasks.length === 0 && (
         <p>
           No tasks on <em>this</em> task list. Nice. 🙌

@@ -12,6 +12,15 @@
   cursor: pointer;
 }
 
+.task-list ul li i:hover {
+  font-weight: bold;
+}
+
+.task-list ul li .task-title:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 .task-list ul li .task-module {
   font-weight: 100;
 }

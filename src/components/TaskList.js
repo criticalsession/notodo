@@ -65,7 +65,8 @@ export default function TaskList({
           </>
         )}
         {task.module === null && " "}
-        {task.title} {getCompletedDate(task)}
+        <span className="task-title">{task.title} </span>
+        {getCompletedDate(task)}
       </li>
     ));
   };
