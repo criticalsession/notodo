@@ -9,10 +9,13 @@
   text-indent: 0;
   margin: 0;
   padding: 0;
+}
+
+.task-list ul li > * {
   cursor: pointer;
 }
 
-.task-list ul li i:hover {
+.task-list ul li .toggle-complete:hover {
   font-weight: bold;
 }
 

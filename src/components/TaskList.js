@@ -36,7 +36,7 @@ export default function TaskList({
     return (
       <>
         <i
-          className={`fa-regular ${
+          className={`toggle-complete fa-regular ${
             task.completeDate === null ? "fa-square" : "fa-square-check"
           }`}
           onClick={(e) => toggleComplete(e, task.id)}
