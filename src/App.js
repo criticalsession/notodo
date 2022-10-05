@@ -70,7 +70,7 @@ function App() {
   const openNote = (id) => {
     setTasks((prevTasks) =>
       prevTasks.map((t) => {
-        if (t.id === id) return { ...t, isOpen: true };
+        if (t.id === id) return { ...t, isOpen: !t.isOpen };
         else return { ...t, isOpen: false };
       })
     );
