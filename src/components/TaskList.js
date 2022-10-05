@@ -52,7 +52,6 @@ export default function TaskList({
         className={`task-item ${
           task.completeDate === null ? "" : "is-complete"
         }`}
-        onClick={() => handleOpenNote(task.id)}
       >
         {getCheckMark(task)}
         {task.module !== null && (
@@ -66,7 +65,10 @@ export default function TaskList({
           </>
         )}
         {task.module === null && " "}
-        <span className={`task-title ${task.isOpen ? "task-open" : ""}`}>
+        <span
+          className={`task-title ${task.isOpen ? "task-open" : ""}`}
+          onClick={() => handleOpenNote(task.id)}
+        >
           {task.title}{" "}
         </span>
         {getCompletedDate(task)}
@@ -90,15 +92,15 @@ export default function TaskList({
             className="clear-filter"
             onClick={() => handleFilterByModule(null)}
           >
-            <i className="fa-solid fa-xmark"></i> Clear project filter
+            <i className="fa-solid fa-xmark"></i> Clear module filter
           </span>
         )}
       </h2>
       {pendingTasks.length > 0 && <ul>{getTaskDisplay(pendingTasks)}</ul>}
       {pendingTasks.length === 0 && (
         <p>
-          No pending tasks on <em>this</em> task list. Noice.{" "}
-          <i className="fa-solid fa-thumbs-up"></i>
+          No pending tasks... not on <em>your</em> watch!{" "}
+          <i className="fa-regular fa-face-sunglasses"></i>
         </p>
       )}
 
