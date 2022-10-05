@@ -95,12 +95,12 @@ function App() {
     setTasks((prevTasks) => prevTasks.filter((t) => t.completeDate === null));
   };
 
-  const addTask = (taskTitle) => {
+  const addTask = (taskTitle, taskModule) => {
     const newTask = {
       id: Math.floor(Math.random() * 1000),
       title: taskTitle,
       createDate: new Date(),
-      module: titleCase("a test module"),
+      module: titleCase(taskModule),
       notes: "",
       completeDate: null,
       isOpen: true,

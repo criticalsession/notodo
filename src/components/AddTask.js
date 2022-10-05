@@ -6,8 +6,21 @@ export default function AddTask({ handleAddTask }) {
 
   const submitForm = (e) => {
     e.preventDefault();
-    handleAddTask(taskTitle);
-    setTaskTitle("");
+    let title = taskTitle.trim();
+    if (title !== "") {
+      let module = "";
+      if (title.includes("::")) {
+        let split = title.indexOf("::");
+
+        module = title.substring(0, split).trim();
+        title = title.substring(split + 2).trim();
+      }
+
+      title = title[0].toUpperCase() + title.substring(1);
+
+      handleAddTask(title, module);
+      setTaskTitle("");
+    }
   };
 
   return (
