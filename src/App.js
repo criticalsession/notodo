@@ -119,6 +119,25 @@ function App() {
     ]);
   };
 
+  const deleteTask = (taskId) => {
+    setTasks((prevTasks) => prevTasks.filter((t) => t.id !== taskId));
+  };
+
+  const updateTask = ({ id, title, module, notes }) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((t) => {
+        if (t.id === id) {
+          return {
+            ...t,
+            title,
+            module: titleCase(module),
+            notes,
+          };
+        } else return { ...t };
+      })
+    );
+  };
+
   const openTask = tasks.find((t) => t.isOpen);
 
   return (
@@ -143,7 +162,11 @@ function App() {
             handleFilterByModule={filterByModule}
             handleClearCompleted={clearCompleted}
           />
-          <TaskDetails task={openTask} />
+          <TaskDetails
+            task={openTask}
+            handleDeleteTask={deleteTask}
+            handleUpdateTask={updateTask}
+          />
         </div>
       )}
     </div>

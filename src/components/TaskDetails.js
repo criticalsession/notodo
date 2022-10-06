@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
+import humanize from "humanize";
 
 import "./TaskDetails.css";
 
-export default function TaskDetails({ task }) {
+export default function TaskDetails({
+  task,
+  handleDeleteTask,
+  handleUpdateTask,
+}) {
   const [editTask, setEditTask] = useState(null);
 
   useEffect(() => {
@@ -14,6 +19,11 @@ export default function TaskDetails({ task }) {
       setEditTask(null);
     }
   }, [task]);
+
+  const updateTask = (e) => {
+    e.preventDefault();
+    handleUpdateTask(editTask);
+  };
 
   if (editTask !== null && editTask !== undefined) {
     return (
@@ -54,10 +64,22 @@ export default function TaskDetails({ task }) {
             }
           ></textarea>
         </label>
-        <button type="button" className="btn save-button">
+        {task.completeDate !== null && (
+          <p>
+            Task completed on {humanize.date("y-M-d H:i", task.completeDate)}.
+          </p>
+        )}
+        <button type="button" className="btn save-button" onClick={updateTask}>
           <i className="fa-solid fa-floppy-disk"></i>
         </button>
-        <button type="button" className="btn delete-button">
+        <button
+          type="button"
+          className="btn delete-button"
+          onClick={(e) => {
+            e.preventDefault();
+            handleDeleteTask(task.id);
+          }}
+        >
           <i className="fa-solid fa-trash-can-xmark"></i>
         </button>
       </div>

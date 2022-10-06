@@ -26,7 +26,7 @@ export default function TaskList({
     return (
       <>
         {task.completeDate !== null && (
-          <em>({humanize.date("y-M-d G:i", task.completeDate)})</em>
+          <em>({humanize.date("y-M-d H:i", task.completeDate)})</em>
         )}
       </>
     );
@@ -86,7 +86,7 @@ export default function TaskList({
   return (
     <div className="task-list">
       <h2>
-        Pending{" "}
+        Pending
         {moduleFilter !== null && (
           <span
             className="clear-filter"
@@ -105,7 +105,7 @@ export default function TaskList({
       )}
 
       <h2>
-        Completed{" "}
+        Completed
         {completedTasks.length > 0 && (
           <span className="clear-filter" onClick={handleClearCompleted}>
             <i className="fa-solid fa-trash-can-xmark"></i> Clear completed
