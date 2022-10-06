@@ -32,3 +32,14 @@ h2 {
 .App .content .task-details {
   flex: 1;
 }
+
+@media (max-width: 640px) {
+  .App .content {
+    display: block;
+  }
+
+  .App .content .task-list,
+  .App .content .task-details {
+    display: block;
+  }
+}
