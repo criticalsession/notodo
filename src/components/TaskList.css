@@ -37,10 +37,6 @@
   color: #888;
 }
 
-.task-list h2 {
-  font-size: 16px;
-}
-
 .task-list .clear-filter {
   display: inline-block;
   font-weight: normal;

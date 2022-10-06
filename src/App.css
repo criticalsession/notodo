@@ -9,6 +9,10 @@ h1 {
   margin: 0;
 }
 
+h2 {
+  font-size: 18px;
+}
+
 .App {
   max-width: 1200px;
   margin: 0 auto;
@@ -16,4 +20,15 @@ h1 {
   background-color: white;
   padding: 20px;
   box-sizing: border-box;
+}
+
+.App .content {
+  min-height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.App .content .task-list,
+.App .content .task-details {
+  flex: 1;
 }

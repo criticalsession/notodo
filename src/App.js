@@ -4,6 +4,7 @@ import { titleCase } from "title-case";
 
 import TaskList from "./components/TaskList";
 import AddTask from "./components/AddTask";
+import TaskDetails from "./components/TaskDetails";
 
 import "./App.css";
 
@@ -14,7 +15,7 @@ function App() {
       id: 1,
       title: "My first task item!",
       completeDate: null,
-      module: null,
+      module: "",
       notes:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
       createDate: new Date(),
@@ -76,12 +77,16 @@ function App() {
     );
   };
 
-  const getOpenedTask = () => {
-    return tasks.find((t) => t.isOpen);
-  };
-
   const filterByModule = (task) => {
-    setModuleFilter(task === null ? null : task.module);
+    const newModuleFilter = task === null ? null : task.module;
+
+    setModuleFilter(newModuleFilter);
+    setTasks((prevTasks) =>
+      prevTasks.map((t) => {
+        if (t.module !== newModuleFilter) return { ...t, isOpen: false };
+        else return { ...t };
+      })
+    );
   };
 
   const getFilteredTasks = () => {
@@ -114,6 +119,8 @@ function App() {
     ]);
   };
 
+  const openTask = tasks.find((t) => t.isOpen);
+
   return (
     <div className="App">
       <h1>
@@ -127,14 +134,17 @@ function App() {
         </p>
       )}
       {tasks.length > 0 && (
-        <TaskList
-          tasks={getFilteredTasks()}
-          moduleFilter={moduleFilter}
-          handleToggleComplete={toggleComplete}
-          handleOpenNote={openNote}
-          handleFilterByModule={filterByModule}
-          handleClearCompleted={clearCompleted}
-        />
+        <div className="content">
+          <TaskList
+            tasks={getFilteredTasks()}
+            moduleFilter={moduleFilter}
+            handleToggleComplete={toggleComplete}
+            handleOpenNote={openNote}
+            handleFilterByModule={filterByModule}
+            handleClearCompleted={clearCompleted}
+          />
+          <TaskDetails task={openTask} />
+        </div>
       )}
     </div>
   );

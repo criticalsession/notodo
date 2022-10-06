@@ -1,0 +1,27 @@
+.task-details {
+}
+
+.task-details label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.task-details label span {
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 10px;
+  font-weight: 1em;
+}
+
+.task-details input,
+.task-details textarea {
+  width: 100%;
+  border-radius: 5px;
+  border: solid 2px black;
+  padding: 5px;
+}
+
+.task-details .task-notes {
+  height: 300px;
+}
