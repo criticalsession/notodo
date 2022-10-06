@@ -35,6 +35,13 @@ export default function Menu() {
           </li>
           <hr />
           <li>
+            <i className="fa-solid fa-square-question"></i> Help
+          </li>
+          <li>
+            <i className="fa-solid fa-envelope"></i> Contact Us
+          </li>
+          <hr />
+          <li className="red-hover">
             <i className="fa-solid fa-right-from-bracket"></i> Sign Out
           </li>
         </ul>

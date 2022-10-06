@@ -77,19 +77,25 @@ export default function TaskDetails({
             {humanize.date("y-M-d H:i", editTask.completeDate)}.
           </p>
         )}
-        <button type="button" className="btn save-button" onClick={updateTask}>
-          <i className="fa-solid fa-floppy-disk"></i>
-        </button>
-        <button
-          type="button"
-          className="btn delete-button"
-          onClick={(e) => {
-            e.preventDefault();
-            handleDeleteTask(task.id);
-          }}
-        >
-          <i className="fa-solid fa-trash-can-xmark"></i>
-        </button>
+        <div className="buttons-container">
+          <button
+            type="button"
+            className="btn save-button"
+            onClick={updateTask}
+          >
+            <i className="fa-solid fa-floppy-disk"></i>
+          </button>
+          <button
+            type="button"
+            className="btn delete-button"
+            onClick={(e) => {
+              e.preventDefault();
+              handleDeleteTask(task.id);
+            }}
+          >
+            <i className="fa-solid fa-trash-can-xmark"></i>
+          </button>
+        </div>
       </div>
     );
   } else {

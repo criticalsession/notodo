@@ -64,8 +64,20 @@
   color: white;
 }
 
+.top-nav .menu-container .menu ul li.red-hover:hover {
+  background-color: red;
+}
+
+.top-nav .menu-container .menu ul li:hover i {
+  margin-left: 5px;
+}
+
 .top-nav .menu-container .menu ul li i {
   width: 25px;
+  display: inline-block;
+  text-align: center;
+  margin-right: 10px;
+  transition: margin 200ms;
 }
 
 .top-nav .menu-container .menu hr {
