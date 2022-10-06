@@ -1,12 +1,25 @@
 import { useState } from "react";
 import _ from "lodash";
 import { titleCase } from "title-case";
+import AWN from "awesome-notifications";
 
 import TaskList from "./components/TaskList";
 import AddTask from "./components/AddTask";
 import TaskDetails from "./components/TaskDetails";
 
 import "./App.css";
+
+let notifier = new AWN({
+  position: "top-right",
+  maxNotifications: 2,
+  animationDuration: 200,
+  durations: {
+    global: 2000,
+  },
+  labels: {
+    success: "",
+  },
+});
 
 function App() {
   const [moduleFilter, setModuleFilter] = useState(null);
@@ -136,6 +149,8 @@ function App() {
         } else return { ...t };
       })
     );
+
+    notifier.success(`Task '${title}' updated succesfully`);
   };
 
   const openTask = tasks.find((t) => t.isOpen);
