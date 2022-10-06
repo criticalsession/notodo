@@ -106,15 +106,16 @@ function App() {
     );
   };
 
-  const getFilteredTasks = () => {
-    return _.sortBy(tasks, (t) => t.createDate).filter((t) => {
-      if (moduleFilter === null) return t;
-      else return t.module === moduleFilter;
-    });
-  };
-
   const clearCompleted = () => {
-    setTasks((prevTasks) => prevTasks.filter((t) => t.completeDate === null));
+    setTasks((prevTasks) =>
+      prevTasks.filter(
+        (t) =>
+          t.completeDate === null ||
+          (t.completeDate !== null &&
+            moduleFilter !== null &&
+            t.module !== moduleFilter)
+      )
+    );
   };
 
   const addTask = (taskTitle, taskModule) => {
@@ -160,6 +161,10 @@ function App() {
   };
 
   const openTask = tasks.find((t) => t.isOpen);
+  const filteredTasks = _.sortBy(tasks, (t) => t.createDate).filter((t) => {
+    if (moduleFilter === null) return t;
+    else return t.module === moduleFilter;
+  });
 
   return (
     <div className="App">
@@ -174,7 +179,7 @@ function App() {
       {tasks.length > 0 && (
         <div className="content">
           <TaskList
-            tasks={getFilteredTasks()}
+            tasks={filteredTasks}
             moduleFilter={moduleFilter}
             handleToggleComplete={toggleComplete}
             handleOpenNote={openNote}
