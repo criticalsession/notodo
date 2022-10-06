@@ -6,6 +6,7 @@ import AWN from "awesome-notifications";
 import TaskList from "./components/TaskList";
 import AddTask from "./components/AddTask";
 import TaskDetails from "./components/TaskDetails";
+import TopNav from "./components/TopNav";
 
 import "./App.css";
 
@@ -162,9 +163,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>
-        <strong>no</strong>todo <i className="fa-solid fa-badge-check"></i>
-      </h1>
+      <TopNav />
       <AddTask handleAddTask={addTask} />
       {tasks.length === 0 && (
         <p>
