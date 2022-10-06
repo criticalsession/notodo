@@ -7,6 +7,7 @@ export default function TaskDetails({
   task,
   handleDeleteTask,
   handleUpdateTask,
+  handleOpenNote,
 }) {
   const [editTask, setEditTask] = useState(null);
 
@@ -28,7 +29,13 @@ export default function TaskDetails({
   if (editTask !== null && editTask !== undefined) {
     return (
       <div className="task-details">
-        <h2>Task Details</h2>
+        <div className="heading">
+          <h2>Task Details</h2>
+          <i
+            className="fa-solid fa-xmark"
+            onClick={() => handleOpenNote(null)}
+          ></i>
+        </div>
 
         <label className="title-label">
           <span>Title:</span>
@@ -64,9 +71,10 @@ export default function TaskDetails({
             }
           ></textarea>
         </label>
-        {task.completeDate !== null && (
+        {editTask.completeDate !== null && (
           <p>
-            Task completed on {humanize.date("y-M-d H:i", task.completeDate)}.
+            Task completed on{" "}
+            {humanize.date("y-M-d H:i", editTask.completeDate)}.
           </p>
         )}
         <button type="button" className="btn save-button" onClick={updateTask}>

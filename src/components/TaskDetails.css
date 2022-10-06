@@ -1,6 +1,32 @@
 .task-details {
 }
 
+.task-details .heading {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.task-details .heading h2 {
+  padding: 0;
+  margin: 0;
+}
+
+.task-details .heading i {
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 5px;
+  padding: 4px 8px;
+  transition: all 200ms;
+}
+
+.task-details .heading i:hover {
+  background-color: black;
+  color: white;
+}
+
 .task-details label {
   display: flex;
   align-items: center;
@@ -40,7 +66,7 @@
   border-radius: 5px;
   background-color: #f4f7f9;
   cursor: pointer;
-  padding: 10px;
+  padding: 10px 15px;
   font-size: 24px;
   margin: 5px;
   transition: all 200ms;

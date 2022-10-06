@@ -17,7 +17,10 @@ let notifier = new AWN({
     global: 2000,
   },
   labels: {
-    success: "",
+    success: "success",
+  },
+  icons: {
+    enabled: true,
   },
 });
 
@@ -134,6 +137,8 @@ function App() {
 
   const deleteTask = (taskId) => {
     setTasks((prevTasks) => prevTasks.filter((t) => t.id !== taskId));
+
+    notifier.success(`Task deleted succesfully`);
   };
 
   const updateTask = ({ id, title, module, notes }) => {
@@ -150,7 +155,7 @@ function App() {
       })
     );
 
-    notifier.success(`Task '${title}' updated succesfully`);
+    notifier.success(`Task "${title}" updated succesfully`);
   };
 
   const openTask = tasks.find((t) => t.isOpen);
@@ -181,6 +186,7 @@ function App() {
             task={openTask}
             handleDeleteTask={deleteTask}
             handleUpdateTask={updateTask}
+            handleOpenNote={openNote}
           />
         </div>
       )}
