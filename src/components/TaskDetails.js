@@ -19,7 +19,8 @@ export default function TaskDetails({ task }) {
     return (
       <div className="task-details">
         <h2>Task Details</h2>
-        <label>
+
+        <label className="title-label">
           <span>Title:</span>
           <input
             className="task-title"
@@ -41,6 +42,9 @@ export default function TaskDetails({ task }) {
             }
           />
         </label>
+        <label className="notes-label">
+          <span>Notes</span>
+        </label>
         <label>
           <textarea
             className="task-notes"
@@ -51,13 +55,10 @@ export default function TaskDetails({ task }) {
           ></textarea>
         </label>
         <button type="button" className="btn save-button">
-          save
-        </button>
-        <button type="button" className="btn cancel-button">
-          cancel
+          <i className="fa-solid fa-floppy-disk"></i>
         </button>
         <button type="button" className="btn delete-button">
-          delete
+          <i className="fa-solid fa-trash-can-xmark"></i>
         </button>
       </div>
     );

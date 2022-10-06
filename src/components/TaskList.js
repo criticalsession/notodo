@@ -108,7 +108,7 @@ export default function TaskList({
         Completed{" "}
         {completedTasks.length > 0 && (
           <span className="clear-filter" onClick={handleClearCompleted}>
-            <i className="fa-solid fa-trash"></i> Clear completed
+            <i className="fa-solid fa-trash-can-xmark"></i> Clear completed
           </span>
         )}
       </h2>
